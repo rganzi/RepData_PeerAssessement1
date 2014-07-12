@@ -1,3 +1,8 @@
+---
+output:
+  html_document:
+    keep_md: yes
+---
 # Reproducible Research: Peer Assessment 1
 
 ## Executive Summary
@@ -6,8 +11,7 @@ Data from a personal activity monitoring device recorded a mean total number of 
 
 ## Analysis
 
-```{r preamble, echo=FALSE, message=FALSE, warning=FALSE}   
-opts_chunk$set(fig.width = 9, fig.height = 5)
+```{r ggplot2, echo=FALSE}   
 require(ggplot2)
 ```
 
