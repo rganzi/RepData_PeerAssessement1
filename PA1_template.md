@@ -7,15 +7,12 @@ Data from a personal activity monitoring device recorded a mean total number of 
 ## Analysis
 
 
-```
-## Loading required package: ggplot2
-```
 
 The data for this analysis is from a personal activity monitoring device, which recorded the number of steps taken by a single anonymous individual during five minute intervals throughout the day and span October and November of 2012. There are a total of 17,568 observations in the data set.
 
 ### Loading and preprocessing the data
 
-The data were downloaded from <https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip> (accessed: July 10, 2014) and uncompressed.
+The activity monitoring data were downloaded from <https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip> (accessed: July 10, 2014) and uncompressed.
 
 
 ```r
@@ -107,7 +104,7 @@ interval.machine <- function(data) {
 }
 ```
 
-The `interval.machine` function was run on the `activity` data set to produce `marco.polo` (named after the famous 13th-14th cent. compulsive step-counter and fitbit earliest adopter). A time series plot of his travels shows a large peak in activity near interval 800 and three peaks of half that size later in the day.
+The `interval.machine` function was run on the `activity` data set to produce `marco.polo` (named after the famous 13th-14th cent. compulsive step-counter and Fitbit earliest-adopter). A time series plot of his travels shows a large peak in activity near interval 800 and three peaks of half that size later in the day.
 
 
 ```r
@@ -185,7 +182,7 @@ impute.perday <- split(impute, impute$date)
 impute.stepsperday <- unsplit(sapply(impute.perday, function(impute.perday) { sum(impute.perday$steps) }), names(impute.perday))
 ```
 
-A histogram with the same `binwidth` (1,000) as in the previous histogram was plotted for comparison of the imputed data set to the original `activity` data set. The histogram shows the increased number of mean-level values in the distribution.
+In comparison to the hisotgram for the original `activity` data set, the histogram for `impute` shows the increased number of mean-level values in the distribution.
 
 
 ```r
@@ -246,7 +243,7 @@ carrot.top <- function(data, k = c("weekday", "weekend")) {
 d.list <- rbind(carrot.top(impute, "weekday"), carrot.top(impute, "weekend"))
 ```
 
-To assess any differnces between mean weekday and weekend activity, a time series plot with two panels was created.
+To assess any differences between mean weekday and weekend activity, a time series plot with two panels was created.
 
 
 ```r
@@ -259,4 +256,4 @@ l + geom_line(colour = "#f25620") +
 
 ![plot of chunk ts.dlist](./PA1_template_files/figure-html/ts.dlist.png) 
 
-The initial peak is greater on weekdays than weekends, as is the activity leading up to this peak. The weekend plot shows greater activity (in the form of more medium-sized peaks) throughout the day, and the weekend activity settles to low levels at a later interval than the weekday activity.
+The initial peak is greater on weekdays than weekends, as is the activity leading up to this peak. The weekend plot shows greater step activity throughout the day, with more medium-sized peaks. In addition, the weekend activity settles to low levels at a later interval than does the weekday activity.
